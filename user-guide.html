@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>User guide — Password Generator</title>
+<meta name="description" content="Password Generator — Strong, memorable passwords made from words, using only characters that sit on the same key on every keyboard. Free, open source, private by design.">
+<link rel="icon" href="assets/icon.png">
+<link rel="stylesheet" href="style.css">
+<script defer src="site.js"></script>
+</head>
+<body>
+<header class="top">
+  <a class="wordmark" href="index.html"><img src="assets/icon.png" alt="" width="28" height="28"><strong>Password Generator</strong></a>
+  <nav>
+    <a href="user-guide.html">Docs</a>
+    <a href="app/">Web app</a>
+    <a href="https://github.com/andrewnimmo/password-generator-releases/releases/latest">Download</a>
+    <a href="https://github.com/andrewnimmo/password-generator-releases">GitHub</a>
+    <button id="theme" type="button" title="Appearance">◐</button>
+  </nav>
+</header>
+<div class="shell">
+<aside class="side">
+<h3>Using it</h3>
+<ul><li><a href="user-guide.html" class="here">User guide</a></li><li><a href="release-notes.html">Release notes</a></li></ul>
+<h3>The project</h3>
+<ul><li><a href="wordlists.html">Word lists</a></li><li><a href="third-party.html">Third-party notices</a></li></ul>
+</aside>
+<main class="doc">
+<h1 id="user_guide">User guide</h1><p>Password Generator makes passwords out of words — long enough to be strong, memorable enough to type — using only characters that sit on the same physical key on every common keyboard. This guide covers the desktop app and the web app together; they work the same way.</p><h2 id="making_a_password">Making a password</h2><ol><li><strong>Choose a specification.</strong> Each one is a password policy: Active   Directory / Entra ID (words, a capital and digits, at least 14   characters), Passphrase (NIST) (length first, plain lower-case words),   Console-safe (letters and spaces only — safe even in a BIOS or   recovery console), Wi-Fi passphrase, or PIN.</li><li><strong>Pick the number of words.</strong> Only counts that reach the specification's   minimum strength are offered, so every choice on the list is a safe one.</li><li><strong>Pick a separator</strong> — a space between words, or none.</li><li><strong>Choose a word list.</strong> It follows the interface language by default; you   can pick any of the eight languages independently.</li><li><strong>Optionally enter your name or username.</strong> Directory policies often   reject passwords containing part of your name; when you enter it, words   containing any part of it (three letters or more) are excluded, and the   final password is checked again. It is used only for this and never   stored.</li><li>Press <strong>Generate</strong>.</li></ol><p>The bar above the button shows the strength of what you will get — in bits of entropy, alongside the specification's minimum. Each extra word roughly doubles the possibilities eleven times over.</p><h2 id="reading_the_result">Reading the result</h2><p>The password appears in the card. On screen, each space is marked with a faint dot so you can tell, even where the text wraps across lines, whether a separator sits at the break. <strong>The dot is display only</strong> — Copy, the QR code and Share all carry the real password with plain spaces.</p><ul><li><strong>Copy</strong> puts the password on the clipboard. On the desktop app, the  clipboard is cleared 60 seconds later if it still holds the password  (switch this off in About if you prefer).</li><li><strong>Show QR</strong> displays the password as a QR code for a phone camera —  nothing is sent anywhere; the only channel is light. The code hides  itself after 60 seconds. Anyone who can see the code can read the  password, so mind who is behind you.</li><li><strong>Share</strong> (web app, where the browser offers it) opens the device's share  sheet.</li></ul><h2 id="why_%22keyboard-safe%22%3F">Why "keyboard-safe"?</h2><p>Type a password on a QWERTY keyboard while the machine believes it is AZERTY and <code>mama</code> comes out as <code>,q,q</code>. Only characters that occupy the same physical key in every covered layout are immune. Deriving that set from real layout data leaves twenty letters, the space bar, and — with one caveat — the digits: on a French (AZERTY) keyboard, digits need Shift. Every password this application makes uses only those characters, so it types correctly even on a console set to the wrong layout.</p><h2 id="languages_and_appearance">Languages and appearance</h2><p>Open <strong>About</strong> (the <em>i</em> button, or the Help menu) to choose the interface language — which also selects the matching word list — and the appearance: match the system, light, or dark. The desktop app can check for updates when you ask it to; nothing is checked unless you enable it.</p><h2 id="the_web_app_on_a_phone">The web app on a phone</h2><p>Open the web app in your browser and add it to your home screen: on Android and desktop browsers, use the <em>Install</em> prompt or menu item; on iPhone and iPad, tap Share → <em>Add to Home Screen</em>. Once installed it works offline, and nothing you generate ever leaves the device.</p><h2 id="privacy">Privacy</h2><p>The application stores nothing but your preferences, sends nothing anywhere, and uses a cryptographically secure random source for every password. The name you enter for exclusion is used in memory only.</p>
+</main>
+</div>
+<footer>
+  <p>Copyright © 2026 Andrew David Nimmo · Eclipse Public License 2.0 · <a href="mailto:contact+password.generator@nimmo.dev">contact+password.generator@nimmo.dev</a></p>
+  <p>Made with 🤖 in Barcelona.</p>
+</footer>
+</body>
+</html>

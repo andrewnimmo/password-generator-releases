@@ -293,6 +293,21 @@ hr {
     color: var(--danger-fg);
 }
 
+.callout.accent {
+    background: var(--accent-subtle);
+    color: var(--fg-default);
+}
+
+.install-hint {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 0 14px 0;
+}
+
+.install-hint button { flex-shrink: 0; }
+
 /* Buttons. */
 button.accent {
     font: inherit;

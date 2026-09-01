@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Release notes — Password Generator</title>
+<meta name="description" content="Password Generator — Strong, memorable passwords made from words, using only characters that sit on the same key on every keyboard. Free, open source, private by design.">
+<link rel="icon" href="assets/icon.png">
+<link rel="stylesheet" href="style.css">
+<script defer src="site.js"></script>
+</head>
+<body>
+<header class="top">
+  <a class="wordmark" href="index.html"><img src="assets/icon.png" alt="" width="28" height="28"><strong>Password Generator</strong></a>
+  <nav>
+    <a href="user-guide.html">Docs</a>
+    <a href="app/">Web app</a>
+    <a href="https://github.com/andrewnimmo/password-generator-releases/releases/latest">Download</a>
+    <a href="https://github.com/andrewnimmo/password-generator-releases">GitHub</a>
+    <button id="theme" type="button" title="Appearance">◐</button>
+  </nav>
+</header>
+<div class="shell">
+<aside class="side">
+<h3>Using it</h3>
+<ul><li><a href="user-guide.html">User guide</a></li><li><a href="release-notes.html" class="here">Release notes</a></li></ul>
+<h3>The project</h3>
+<ul><li><a href="wordlists.html">Word lists</a></li><li><a href="third-party.html">Third-party notices</a></li></ul>
+</aside>
+<main class="doc">
+<h1 id="release_notes">Release notes</h1><p>What changed for people using the application. Development detail lives in the private repository's changelog.</p><h2 id="2.0.0_%E2%80%94_first_release_of_the_rewrite_%28unreleased%29">2.0.0 — first release of the rewrite (unreleased)</h2><p>A ground-up rewrite of the earlier prototype.</p><ul><li><strong>Keyboard-safe passwords</strong>: every password uses only characters that keep  their physical key position across QWERTY, QWERTZ and AZERTY layouts.</li><li><strong>Password specifications</strong>: Active Directory / Entra ID, NIST passphrase,  Console-safe, Wi-Fi passphrase, and PIN — each with an enforced minimum  strength; word counts that could not reach it are not offered.</li><li><strong>Name exclusion</strong> that follows the directory rule exactly (tokens of  three or more letters), with the result re-checked.</li><li><strong>Eight word lists</strong> — English, Catalan, German, Spanish, French,  Italian, Portuguese and Chinese (pinyin) — with the interface in nine  languages.</li><li><strong>QR transfer</strong> to a nearby phone, on demand, self-hiding after 60  seconds; <strong>Share</strong> in the web app.</li><li><strong>Web app</strong> installable to the home screen, working fully offline.</li><li><strong>Desktop app</strong> for macOS (Linux to follow): native menus, About and  Help, light/dark appearance, optional update check, clipboard auto-clear.</li></ul>
+</main>
+</div>
+<footer>
+  <p>Copyright © 2026 Andrew David Nimmo · Eclipse Public License 2.0 · <a href="mailto:contact+password.generator@nimmo.dev">contact+password.generator@nimmo.dev</a></p>
+  <p>Made with 🤖 in Barcelona.</p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Password Generator</title>
+<meta name="description" content="Password Generator — Strong, memorable passwords made from words, using only characters that sit on the same key on every keyboard. Free, open source, private by design.">
+<link rel="icon" href="assets/icon.png">
+<link rel="stylesheet" href="style.css">
+<script defer src="site.js"></script>
+</head>
+<body>
+<header class="top">
+  <a class="wordmark" href="index.html"><img src="assets/icon.png" alt="" width="28" height="28"><strong>Password Generator</strong></a>
+  <nav>
+    <a href="user-guide.html">Docs</a>
+    <a href="app/">Web app</a>
+    <a href="https://github.com/andrewnimmo/password-generator-releases/releases/latest">Download</a>
+    <a href="https://github.com/andrewnimmo/password-generator-releases">GitHub</a>
+    <button id="theme" type="button" title="Appearance">◐</button>
+  </nav>
+</header>
+<main>
+<section class="hero">
+  <img class="hero-icon" src="assets/icon.png" alt="Password Generator icon" width="96" height="96">
+  <h1>Password Generator</h1>
+  <p class="tag">Strong, memorable passwords — safe on every keyboard.</p>
+  <div class="dl" id="downloads">
+    <a class="btn primary" href="app/">Open the web app</a>
+    <a class="btn" id="dl-main" href="https://github.com/andrewnimmo/password-generator-releases/releases/latest">Download</a>
+  </div>
+  <p class="dl-note" id="dl-note">Web app · macOS · Linux — the desktop apps carry their own Java runtime; the web app needs nothing installed.</p>
+</section>
+<section class="cleave card">
+  <p><strong>password</strong> <span class="ipa">/ˈpɑːswɜːd/</span> <em>noun</em></p>
+  <ol><li>a secret sequence of characters used to prove who you are.</li>
+      <li>something everyone was told to make impossible to remember.</li></ol>
+  <p class="muted"><em>A good one resolves the contradiction: impossible to guess, easy to type — even on the wrong keyboard.</em></p>
+</section>
+<section class="shot">
+  <img class="only-light" src="assets/app-light.png" alt="Password Generator with a fresh passphrase, light theme" width="640" height="620">
+  <img class="only-dark" src="assets/app-dark.png" alt="Password Generator with a fresh passphrase, dark theme" width="640" height="620">
+</section>
+<section class="features">
+  <div class="card"><h3>Safe on every keyboard</h3><p>Only characters that sit on the same physical key on QWERTY, QWERTZ and AZERTY layouts — so a password typed into a console set to the wrong layout still comes out right.</p></div>
+  <div class="card"><h3>Strength you can see</h3><p>Every specification has a minimum strength, shown in bits before you generate. Word counts that could not reach it are simply not offered.</p></div>
+  <div class="card"><h3>Words, not noise</h3><p>Passwords built from common words are long enough to be strong and plain enough to type from memory. Directory rules about your own name are honoured to the letter.</p></div>
+  <div class="card"><h3>Private by design</h3><p>Nothing you generate leaves the device: no accounts, no telemetry, no network access to make a password. The web app works offline once installed.</p></div>
+  <div class="card"><h3>Eight word lists, nine languages</h3><p>English, Catalan, German, Spanish, French, Italian, Portuguese and Chinese word lists — with the interface in those and Japanese. <a href="wordlists.html">Where the words come from</a>.</p></div>
+  <div class="card"><h3>Across to your phone</h3><p>Show the password as a QR code for a camera to read — light is the only channel, and the code hides itself after a minute. <a href="user-guide.html">User guide</a>.</p></div>
+</section>
+<section class="cleave card" id="privacy">
+  <p><strong>Privacy</strong></p>
+  <p class="muted">This site is static files served by GitHub Pages: no cookies, no analytics, no tracking scripts. Your browser makes one request to GitHub's API, to show the latest version number on the download button; pages served from github.io appear in GitHub's ordinary server logs, covered by the <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">GitHub Privacy Statement</a>. The web app under <a href="app/">app/</a> makes no request beyond loading its own files. The application's own privacy promises are stronger still: see <a href="user-guide.html">the user guide</a>.</p>
+</section>
+
+</main>
+<footer>
+  <p>Copyright © 2026 Andrew David Nimmo · Eclipse Public License 2.0 · <a href="mailto:contact+password.generator@nimmo.dev">contact+password.generator@nimmo.dev</a></p>
+  <p>Made with 🤖 in Barcelona.</p>
+</footer>
+</body>
+</html>

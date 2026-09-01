@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Third-party notices — Password Generator</title>
+<meta name="description" content="Password Generator — Strong, memorable passwords made from words, using only characters that sit on the same key on every keyboard. Free, open source, private by design.">
+<link rel="icon" href="assets/icon.png">
+<link rel="stylesheet" href="style.css">
+<script defer src="site.js"></script>
+</head>
+<body>
+<header class="top">
+  <a class="wordmark" href="index.html"><img src="assets/icon.png" alt="" width="28" height="28"><strong>Password Generator</strong></a>
+  <nav>
+    <a href="user-guide.html">Docs</a>
+    <a href="app/">Web app</a>
+    <a href="https://github.com/andrewnimmo/password-generator-releases/releases/latest">Download</a>
+    <a href="https://github.com/andrewnimmo/password-generator-releases">GitHub</a>
+    <button id="theme" type="button" title="Appearance">◐</button>
+  </nav>
+</header>
+<div class="shell">
+<aside class="side">
+<h3>Using it</h3>
+<ul><li><a href="user-guide.html">User guide</a></li><li><a href="release-notes.html">Release notes</a></li></ul>
+<h3>The project</h3>
+<ul><li><a href="wordlists.html">Word lists</a></li><li><a href="third-party.html" class="here">Third-party notices</a></li></ul>
+</aside>
+<main class="doc">
+<h1 id="third-party_components">Third-party components</h1><p>Password Generator is distributed under the Eclipse Public License 2.0 (see <code>LICENSE</code>). It depends on, and its installers redistribute, the components below.</p><h2 id="bundled_in_the_installers">Bundled in the installers</h2><p>The <code>.dmg</code> (and, later, the Windows and Linux installers) contains a Java runtime produced by <code>jpackage</code>. That runtime is <strong>not</strong> covered by this project's EPL-2.0 licence.</p><table><thead><tr><th>Component</th><th>Licence</th><th>Source</th></tr></thead><tbody><tr><td>OpenJDK 25 (Eclipse Temurin)</td><td>GPL-2.0 with Classpath Exception</td><td>https://github.com/adoptium/temurin-build</td></tr><tr><td>OpenJFX 26</td><td>GPL-2.0 with Classpath Exception</td><td>https://github.com/openjdk/jfx</td></tr></tbody></table><p>The Classpath Exception is what makes this combination lawful: it grants permission to link independent modules against these components and to distribute the result under terms of your choosing, without the resulting work becoming subject to the GPL. The components themselves stay under GPL-2.0+CE, and the links above satisfy the corresponding source-availability requirement.</p><h2 id="application_dependencies_%28desktop%29">Application dependencies (desktop)</h2><table><thead><tr><th>Component</th><th>Licence</th></tr></thead><tbody><tr><td>org.clojure/clojure</td><td>Eclipse Public License 1.0</td></tr><tr><td>org.clojure/tools.cli</td><td>Eclipse Public License 1.0</td></tr><tr><td>metosin/malli</td><td>Eclipse Public License 2.0</td></tr><tr><td>cljfx/cljfx</td><td>MIT</td></tr><tr><td>io.github.mkpaz/atlantafx-base</td><td>MIT</td></tr><tr><td>org.openjfx/javafx-{base,graphics,controls}</td><td>GPL-2.0 with Classpath Exception</td></tr><tr><td>net.java.dev.jna/jna</td><td>Apache-2.0 OR LGPL-2.1 (dual; used under Apache-2.0)</td></tr><tr><td>metosin/jsonista (and Jackson)</td><td>Apache-2.0</td></tr><tr><td>com.google.zxing/core</td><td>Apache-2.0</td></tr></tbody></table><h2 id="word_lists">Word lists</h2><p>The application embeds word lists that are data, not code, each under its own licence — CC0-1.0 (French), CC-BY-3.0 (English/EFF, German, Brazilian Portuguese), CC-BY-4.0 (Catalan, Spanish, Italian), and GPL-3.0 (the Chinese pinyin list, whose full licence text ships inside the application as <code>wordlists/COPYING-GPL-3.0.txt</code>). Full provenance, checksums and attribution are in <code>WORDLISTS.md</code>, installed alongside the application.</p><h2 id="web_application">Web application</h2><p>The browser build additionally uses reagent (MIT), React (MIT) and qrcode-generator (MIT). It bundles no Java runtime.</p><h2 id="build_and_test_only">Build and test only</h2><p>Not redistributed; used during development.</p><table><thead><tr><th>Component</th><th>Licence</th></tr></thead><tbody><tr><td>io.github.clojure/tools.build</td><td>Eclipse Public License 1.0</td></tr><tr><td>io.github.cognitect-labs/test-runner</td><td>Eclipse Public License 1.0</td></tr><tr><td>org.clojure/test.check</td><td>Eclipse Public License 1.0</td></tr><tr><td>com.google.zxing/javase (round-trip tests)</td><td>Apache-2.0</td></tr><tr><td>clj-kondo/clj-kondo</td><td>Eclipse Public License 1.0</td></tr><tr><td>io.github.clj-holmes/clj-watson</td><td>MIT</td></tr><tr><td>thheller/shadow-cljs</td><td>Eclipse Public License 1.0</td></tr></tbody></table>
+</main>
+</div>
+<footer>
+  <p>Copyright © 2026 Andrew David Nimmo · Eclipse Public License 2.0 · <a href="mailto:contact+password.generator@nimmo.dev">contact+password.generator@nimmo.dev</a></p>
+  <p>Made with 🤖 in Barcelona.</p>
+</footer>
+</body>
+</html>
