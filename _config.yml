@@ -1,0 +1,7 @@
+# Jekyll configuration for the public site (GitHub Pages renders the
+# Markdown here with the default theme; app/ is served as static files).
+title: Password Generator
+description: Keyboard-safe passphrase generator — desktop app and web app
+theme: jekyll-theme-primer
+exclude:
+  - README.md

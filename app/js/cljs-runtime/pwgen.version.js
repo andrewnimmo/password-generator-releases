@@ -1,0 +1,4 @@
+goog.provide('pwgen.version');
+pwgen.version.version = new cljs.core.Keyword(null,"version","version",425292698).cljs$core$IFn$_invoke$arity$1(new cljs.core.PersistentArrayMap(null, 8, [new cljs.core.Keyword(null,"name","name",1843675177),"Password Generator",new cljs.core.Keyword(null,"tagline","tagline",281987682),null,new cljs.core.Keyword(null,"version","version",425292698),"2.0.0-SNAPSHOT",new cljs.core.Keyword(null,"bundle-id","bundle-id",-686250292),"dev.nimmo.password-generator",new cljs.core.Keyword(null,"vendor","vendor",1931975424),"Andrew David Nimmo",new cljs.core.Keyword(null,"copyright","copyright",-1829660853),"Copyright \u00A9 2026 Andrew David Nimmo",new cljs.core.Keyword(null,"contact","contact",609093372),"contact+password.generator@nimmo.dev",new cljs.core.Keyword(null,"homepage","homepage",-1646828249),"https://github.com/andrewnimmo/password-generator"], null));
+
+//# sourceMappingURL=pwgen.version.js.map

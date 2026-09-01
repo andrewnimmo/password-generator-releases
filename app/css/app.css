@@ -1,0 +1,421 @@
+/* app.css (web) — the desktop stylesheet's visual language in browser CSS.
+ *
+ * Theming mirrors the desktop's three states (SPEC §11): light tokens on
+ * :root; dark under prefers-color-scheme for the "Match the system"
+ * default; [data-theme="dark"] / [data-theme="light"] pin an explicit
+ * About choice in both directions. Token names follow the AtlantaFX roles
+ * the desktop uses, so the two stylesheets read side by side. */
+
+:root {
+    --bg-default: #ffffff;
+    --bg-subtle: #f6f8fa;
+    --bg-inset: #eff2f5;
+    --bg-overlay: #ffffff;
+    --fg-default: #1f2328;
+    --fg-muted: #59636e;
+    --border-default: #d1d9e0;
+    --border-muted: #e4e9ee;
+    --accent: #0969da;
+    --accent-fg: #ffffff;
+    --accent-subtle: #ddf4ff;
+    --accent-muted: #98c8f5;
+    --danger-subtle: #ffebe9;
+    --danger-fg: #d1242f;
+    --success-fg: #1a7f37;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+        --bg-default: #212528;
+        --bg-subtle: #2b3036;
+        --bg-inset: #1b1f23;
+        --bg-overlay: #2b3036;
+        --fg-default: #e6e8ea;
+        --fg-muted: #9aa4ae;
+        --border-default: #444c56;
+        --border-muted: #373e47;
+        --accent: #4f8cc9;
+        --accent-fg: #ffffff;
+        --accent-subtle: #223549;
+        --accent-muted: #3a5875;
+        --danger-subtle: #3d2326;
+        --danger-fg: #ef9a9a;
+        --success-fg: #7ee2a8;
+    }
+}
+
+:root[data-theme="dark"] {
+    --bg-default: #212528;
+    --bg-subtle: #2b3036;
+    --bg-inset: #1b1f23;
+    --bg-overlay: #2b3036;
+    --fg-default: #e6e8ea;
+    --fg-muted: #9aa4ae;
+    --border-default: #444c56;
+    --border-muted: #373e47;
+    --accent: #4f8cc9;
+    --accent-fg: #ffffff;
+    --accent-subtle: #223549;
+    --accent-muted: #3a5875;
+    --danger-subtle: #3d2326;
+    --danger-fg: #ef9a9a;
+    --success-fg: #7ee2a8;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+    margin: 0;
+    height: 100%;
+}
+
+body {
+    background: var(--bg-subtle);
+    color: var(--fg-default);
+    font: 13px/1.45 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          "Helvetica Neue", Arial, sans-serif;
+}
+
+#app, .app {
+    min-height: 100%;
+}
+
+/* The page presents as the desktop window: a centred column, body above a
+   pinned footer. */
+.app {
+    max-width: 640px;
+    margin: 0 auto;
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    background: var(--bg-default);
+    border-left: 1px solid var(--border-muted);
+    border-right: 1px solid var(--border-muted);
+}
+
+/* Padding matches the desktop's .window-body (18/20/6/20). */
+.window-body {
+    flex: 1;
+    padding: 18px 20px 6px 20px;
+}
+
+.footer-bar {
+    position: sticky;
+    bottom: 0;
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+    /* Safe-area insets keep Generate clear of the iPhone home indicator
+       and rounded corners in standalone PWA mode (found on a real
+       iPhone 15 Pro Max; requires viewport-fit=cover in index.html). */
+    padding: 12px
+             calc(20px + env(safe-area-inset-right))
+             calc(12px + env(safe-area-inset-bottom))
+             calc(20px + env(safe-area-inset-left));
+    background: var(--bg-subtle);
+    border-top: 1px solid var(--border-muted);
+}
+
+.header-bar {
+    display: flex;
+    justify-content: flex-end;
+    gap: 2px;
+    padding: 0 0 6px 0;
+}
+
+.icon-button {
+    font-size: 12px;
+    font-weight: bold;
+    width: 26px;
+    height: 26px;
+    padding: 0;
+    border-radius: 13px;
+    border: 1px solid var(--border-default);
+    background: transparent;
+    color: var(--fg-muted);
+    cursor: pointer;
+}
+
+.icon-button:hover {
+    background: var(--bg-subtle);
+    color: var(--fg-default);
+}
+
+.field { margin: 0 0 14px 0; }
+
+.field-label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 4px;
+}
+
+.hint {
+    font-size: 11.5px;
+    color: var(--fg-muted);
+    margin: 4px 0 0 0;
+}
+
+.controls-row {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+}
+
+select, input[type="text"] {
+    font: inherit;
+    color: var(--fg-default);
+    background: var(--bg-default);
+    border: 1px solid var(--border-default);
+    border-radius: 6px;
+    padding: 6px 8px;
+}
+
+input[type="text"] { width: 100%; }
+
+select:focus, input:focus, button:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 1px;
+}
+
+/* Segmented pills, as on the desktop. */
+.pills { display: inline-flex; }
+
+.pill {
+    font: inherit;
+    padding: 6px 14px;
+    background: var(--bg-subtle);
+    color: var(--fg-default);
+    border: 1px solid var(--border-default);
+    border-left-width: 0;
+    cursor: pointer;
+}
+
+.pill:first-child {
+    border-left-width: 1px;
+    border-radius: 6px 0 0 6px;
+}
+
+.pill:last-child { border-radius: 0 6px 6px 0; }
+
+.pill.selected {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--accent-fg);
+    cursor: default;
+}
+
+hr {
+    border: none;
+    border-top: 1px solid var(--border-muted);
+    margin: 14px 0;
+}
+
+/* Entropy meter. */
+.meter {
+    height: 10px;
+    border-radius: 5px;
+    background: var(--bg-inset);
+    overflow: hidden;
+}
+
+.meter-fill {
+    height: 100%;
+    background: var(--accent);
+    transition: width 0.15s ease;
+}
+
+.meter-bad .meter-fill { background: var(--danger-fg); }
+
+/* The password card — same idea as the desktop: a thing, not loose text.
+   Colour-only feedback on Copy; nothing here may change size (QA rule). */
+.password-card {
+    margin-top: 14px;
+    padding: 16px 18px;
+    background: var(--accent-subtle);
+    border: 1px solid var(--accent-muted);
+    border-radius: 8px;
+    text-align: center;
+}
+
+.password-actions {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 8px;
+}
+
+.password-text {
+    text-align: center;
+    font-family: "Menlo", "SF Mono", "Consolas", "DejaVu Sans Mono", monospace;
+    font-size: 17px;
+    overflow-wrap: anywhere;
+}
+
+/* Separator dots: present at a wrap, receding otherwise. */
+.pw-sep {
+    color: var(--fg-muted);
+    opacity: 0.55;
+}
+
+.copy-btn {
+    font: inherit;
+    min-width: 90px;
+    padding: 6px 12px;
+    border: 1px solid var(--border-default);
+    border-radius: 6px;
+    background: var(--bg-default);
+    color: var(--fg-default);
+    cursor: pointer;
+}
+
+.copy-btn.copied { color: var(--success-fg); }
+
+.password-meta {
+    font-size: 11.5px;
+    color: var(--fg-muted);
+    margin: 6px 0 0 0;
+}
+
+.password-meta.copied-note { color: var(--success-fg); }
+
+/* Callouts. */
+.callout {
+    border-radius: 8px;
+    padding: 11px 13px;
+    margin-top: 8px;
+}
+
+.callout p { margin: 0; }
+
+.callout.danger {
+    background: var(--danger-subtle);
+    color: var(--danger-fg);
+}
+
+/* Buttons. */
+button.accent {
+    font: inherit;
+    padding: 8px 18px;
+    border: 1px solid var(--accent);
+    border-radius: 6px;
+    background: var(--accent);
+    color: var(--accent-fg);
+    cursor: pointer;
+}
+
+button.accent:disabled {
+    opacity: 0.5;
+    cursor: default;
+}
+
+/* Overlay dialogs (About, Help) — the desktop's dim backdrop + card. */
+.overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.42);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    z-index: 10;
+}
+
+.dialog-card {
+    background: var(--bg-overlay);
+    border: 1px solid var(--border-default);
+    border-radius: 12px;
+    padding: 20px;
+    max-width: 480px;
+    width: 100%;
+    max-height: calc(100vh - 32px);
+    max-height: calc(100dvh - 32px);
+    overflow-y: auto;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.35);
+}
+
+.dialog-card p { margin: 6px 0; }
+
+.title-text {
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.about-head {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 10px;
+}
+
+.about-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 12px;
+}
+
+.dialog-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 14px;
+}
+
+/* Option labels in dialogs sit above their control, as on the desktop. */
+.dialog-card .field > label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 4px;
+}
+
+/* The QR image sits on its own white card whatever the theme — readers
+   want dark modules on a light quiet zone — and stays pixel-crisp. */
+.qr-holder {
+    display: flex;
+    justify-content: center;
+    margin: 10px 0;
+}
+
+.qr-img {
+    width: 280px;
+    height: 280px;
+    image-rendering: pixelated;
+    background: #ffffff;
+    border-radius: 8px;
+}
+
+.help-topic { margin: 10px 0; }
+
+.help-topic .headline {
+    font-weight: bold;
+    margin: 0 0 2px 0;
+}
+
+/* The dictionary entry (csv-cleaver's pattern). */
+.dict-entry {
+    background: var(--bg-subtle);
+    border-radius: 8px;
+    padding: 10px 12px;
+    margin: 10px 0;
+}
+
+.dict-head {
+    display: flex;
+    gap: 8px;
+    align-items: baseline;
+}
+
+.dict-word { font-weight: bold; font-size: 1.1em; }
+.dict-pron, .dict-pos { color: var(--fg-muted); }
+.dict-pos { font-style: italic; }
+.dict-entry .dict-sense { margin: 2px 0; }
+.dict-note {
+    font-style: italic;
+    color: var(--fg-muted);
+    margin: 4px 0 0 0;
+}
+
+/* Small screens: the app column fills the viewport; control groups stack. */
+@media (max-width: 660px) {
+    .app { border: none; }
+    .controls-row { gap: 14px; }
+}
