@@ -21,6 +21,8 @@
     --accent-muted: #98c8f5;
     --danger-subtle: #ffebe9;
     --danger-fg: #d1242f;
+    --attention-subtle: #fff8c5;
+    --attention-fg: #9a6700;
     --success-fg: #1a7f37;
 }
 
@@ -40,6 +42,8 @@
         --accent-muted: #3a5875;
         --danger-subtle: #3d2326;
         --danger-fg: #ef9a9a;
+        --attention-subtle: #3b2e00;
+        --attention-fg: #e3b341;
         --success-fg: #7ee2a8;
     }
 }
@@ -59,6 +63,8 @@
     --accent-muted: #3a5875;
     --danger-subtle: #3d2326;
     --danger-fg: #ef9a9a;
+    --attention-subtle: #3b2e00;
+    --attention-fg: #e3b341;
     --success-fg: #7ee2a8;
 }
 
@@ -178,8 +184,16 @@ select:focus, input:focus, button:focus-visible {
     outline-offset: 1px;
 }
 
-/* Segmented pills, as on the desktop. */
-.pills { display: inline-flex; }
+/* Segmented pills, as on the desktop. A group wider than its box wraps
+   as a group (five reveal effects, long German labels, phone widths):
+   every pill carries its own border, neighbours overlap by one pixel, and
+   the selected pill sits on top so its accent border stays whole. */
+.pills {
+    display: inline-flex;
+    flex-wrap: wrap;
+    row-gap: 4px;
+    max-width: 100%;
+}
 
 .pill {
     font: inherit;
@@ -187,18 +201,20 @@ select:focus, input:focus, button:focus-visible {
     background: var(--bg-subtle);
     color: var(--fg-default);
     border: 1px solid var(--border-default);
-    border-left-width: 0;
+    margin-left: -1px;
     cursor: pointer;
 }
 
 .pill:first-child {
-    border-left-width: 1px;
+    margin-left: 0;
     border-radius: 6px 0 0 6px;
 }
 
 .pill:last-child { border-radius: 0 6px 6px 0; }
 
 .pill.selected {
+    position: relative;
+    z-index: 1;
     background: var(--accent);
     border-color: var(--accent);
     color: var(--accent-fg);
@@ -228,7 +244,8 @@ hr {
 .meter-bad .meter-fill { background: var(--danger-fg); }
 
 /* The password card — same idea as the desktop: a thing, not loose text.
-   Colour-only feedback on Copy; nothing here may change size (QA rule). */
+   Colour-only feedback on Copy; nothing here may change size (QA rule).
+   A tap anywhere on it copies (ruling 2026-10-02). */
 .password-card {
     margin-top: 14px;
     padding: 16px 18px;
@@ -236,6 +253,7 @@ hr {
     border: 1px solid var(--accent-muted);
     border-radius: 8px;
     text-align: center;
+    cursor: pointer;
 }
 
 .password-actions {
@@ -245,17 +263,72 @@ hr {
     margin-top: 8px;
 }
 
+/* The password exactly as typed: one unbreakable span per word (plus its
+   separator), a break opportunity only between them (SPEC §11). */
 .password-text {
     text-align: center;
     font-family: "Menlo", "SF Mono", "Consolas", "DejaVu Sans Mono", monospace;
     font-size: 17px;
-    overflow-wrap: anywhere;
+    line-height: 1.9;
+    overflow-wrap: normal;
+    word-break: normal;
 }
 
-/* Separator dots: present at a wrap, receding otherwise. */
-.pw-sep {
+.pw-unit { white-space: nowrap; }
+
+/* The space separator drawn as a key over a REAL space (white-space: pre
+   keeps it in the text, so a selection copies it). The label is the
+   stylesheet's, from data-label — never part of the password. */
+.pw-space {
+    white-space: pre;
+    display: inline-block;
+    position: relative;
+    min-width: 3.3em;
+    height: 1.25em;
+    line-height: 1.25em;
+    margin: 0 3px;
+    vertical-align: middle;
+    border: 1px solid var(--border-default);
+    border-bottom-width: 2px;
+    border-radius: 5px;
+    background: var(--bg-default);
+}
+
+.pw-space::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    font-size: 11px;
+    line-height: 1.75;
     color: var(--fg-muted);
-    opacity: 0.55;
+    text-align: center;
+    text-transform: lowercase;
+}
+
+.password-caption {
+    font-size: 12.5px;
+    color: var(--fg-default);
+    margin: 8px 0 0 0;
+}
+
+/* Read by assistive technology only: the final password while the
+   reveal animation plays (SPEC §11). */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+}
+
+.password-cue {
+    font-size: 11px;
+    color: var(--fg-muted);
+    margin: 4px 0 0 0;
 }
 
 .copy-btn {
@@ -278,6 +351,7 @@ hr {
 }
 
 .password-meta.copied-note { color: var(--success-fg); }
+.password-meta.copy-failed-note { color: var(--danger-fg); }
 
 /* Callouts. */
 .callout {
@@ -296,6 +370,12 @@ hr {
 .callout.accent {
     background: var(--accent-subtle);
     color: var(--fg-default);
+}
+
+/* The name-not-checked warning (ruling 2026-10-02): a caution, not an error. */
+.callout.attention {
+    background: var(--attention-subtle);
+    color: var(--attention-fg);
 }
 
 .install-hint {

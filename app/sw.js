@@ -6,7 +6,7 @@
  * The page makes no requests beyond its own origin's static files, and
  * neither does this worker. */
 
-const CACHE = "pwgen-v5"; // v5: iOS install hint (2026-09-01); v4: install icons for masked surfaces
+const CACHE = "pwgen-v6"; // v6: full stop separator, capitals, the password card, reveal effects (2026-10-03); v5: iOS install hint (2026-09-01); v4: install icons for masked surfaces
 
 const ASSETS = [
   ".",
