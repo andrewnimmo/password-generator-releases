@@ -152,7 +152,18 @@ main { max-width: 860px; margin: 0 auto; padding: 24px 20px 48px; }
 .card p { margin: 0; font-size: 14.5px; color: var(--fg-muted); }
 .card p a { color: var(--accent); }
 
-.shot { text-align: center; margin: 32px 0; }
+/* The two screenshots side by side, the phone narrower; they stack on a
+   narrow screen. */
+.shots {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 24px;
+  margin: 32px 0;
+}
+.shot { text-align: center; margin: 0; flex: 1 1 420px; max-width: 640px; }
+.shot.phone { flex: 0 1 260px; }
 .shot img {
   max-width: 100%;
   height: auto;
@@ -160,6 +171,8 @@ main { max-width: 860px; margin: 0 auto; padding: 24px 20px 48px; }
   border-radius: 10px;
   box-shadow: var(--shadow);
 }
+.shot.phone img { border-radius: 18px; }
+.shot figcaption { margin-top: 8px; font-size: 13.5px; color: var(--fg-muted); }
 .only-dark { display: none; }
 @media (prefers-color-scheme: dark) {
   .only-light { display: none; }
